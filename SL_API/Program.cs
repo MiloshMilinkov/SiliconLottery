@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Data;
+using Core.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<StoreContext>(opt => {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+//Addind our service only for the lifetime of the http request, good for data gathering!
+builder.Services.AddScoped<IProductRepository,ProductRepository>();
 
 var app = builder.Build();
 
