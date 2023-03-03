@@ -1,0 +1,38 @@
+[
+    {
+        "Id":1,
+        "Name":"Motherboard"
+    },
+    {
+        "Id":2,
+        "Name":"CPU"
+    },
+    {
+        "Id":3,
+        "Name":"RAM"
+    },
+    {
+        "Id":4,
+        "Name":"Graphics Cards"
+    },
+    {
+        "Id":5,
+        "Name":"Solid State Drive"
+    },
+    {
+        "Id":6,
+        "Name":"Hard Disk Drive"
+    },
+    {
+        "Id":7,
+        "Name":"PC Case"
+    },
+    {
+        "Id":8,
+        "Name":"Power Supply"
+    },
+    {
+        "Id":9,
+        "Name":"Cooling Equipment"
+    }
+]

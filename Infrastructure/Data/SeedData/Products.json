@@ -1,0 +1,26 @@
+[
+    {
+        "Name": "AMD Ryzen 5 7600",
+        "Description":"processor",
+        "Price":250,
+        "PictureUrl":"",
+        "ProductTypeId":2,
+        "ProductBrandId":1
+    },
+    {
+        "Name": "PowerColor AXRX 6800XT 16GBD6-3DHE/OC",
+        "Description":"gpu",
+        "Price":450,
+        "PictureUrl":"",
+        "ProductTypeId":5,
+        "ProductBrandId":9
+    },
+    {
+        "Name": "1 TB Samsung 970 EVO PLUS MZ-V7S1T0BW",
+        "Description":"ssd",
+        "Price":75,
+        "PictureUrl":"",
+        "ProductTypeId":5,
+        "ProductBrandId":7
+    }
+]
