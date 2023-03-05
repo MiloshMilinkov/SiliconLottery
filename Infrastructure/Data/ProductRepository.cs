@@ -18,6 +18,17 @@ namespace Infrastructure.Data
         public ProductRepository(StoreContext storeContext){
             _storeContext=storeContext;
         }
+
+        public async Task<IReadOnlyList<ProductBrand>> GetBrandsAsync()
+        {
+            return await _storeContext.ProductBrands.ToListAsync();
+        }
+
+        public async Task<ProductBrand> GetBrandsByIdAsync(int id)
+        {
+            return await _storeContext.ProductBrands.FindAsync(id);
+        }
+
         public async Task<Product> GetProductByIdAsync(int id)
         {
             return await _storeContext.Products.FindAsync(id);
@@ -26,6 +37,16 @@ namespace Infrastructure.Data
         public async Task<IReadOnlyList<Product>> GetProductsAsync()
         {
             return await _storeContext.Products.ToListAsync();
+        }
+
+        public async Task<ProductType> GetTypeByIdAsync(int id)
+        {
+            return await _storeContext.ProductTypes.FindAsync(id);
+        }
+
+        public async Task<IReadOnlyList<ProductType>> GetTypesAsync()
+        {
+            return await _storeContext.ProductTypes.ToListAsync();
         }
     }
 }

@@ -10,7 +10,8 @@ namespace SL_API.Controllers
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
-        private readonly IProductRepository _repo;
+       private readonly IProductRepository _repo;
+
         //When the controller is called it creates an instance of this controller and calls our IProductRepository as a service.
         public ProductsController(IProductRepository repo)
         {
@@ -33,5 +34,17 @@ namespace SL_API.Controllers
             var products=await _repo.GetProductByIdAsync(id);
             return Ok(products);
         }
+        [HttpGet("types")]
+        public async Task<ActionResult<IReadOnlyList<ProductType>>>GetProductTypes(){
+            var types=await _repo.GetTypesAsync();
+            return Ok(types);
+        }
+        [HttpGet("brands")]
+        public async Task<ActionResult<IReadOnlyList<ProductType>>>GetProductBrands(){
+            var brands=await _repo.GetBrandsAsync();
+            return Ok(brands);
+        }
+
+     
     }
 }
