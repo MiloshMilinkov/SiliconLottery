@@ -19,7 +19,7 @@ builder.Services.AddDbContext<StoreContext>(opt => {
 
 //Addind our service only for the lifetime of the http request, good for data gathering!
 builder.Services.AddScoped<IProductRepository,ProductRepository>();
-
+builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
