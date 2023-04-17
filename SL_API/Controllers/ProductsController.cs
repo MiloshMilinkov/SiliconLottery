@@ -4,6 +4,7 @@ using Infrastructure.Data;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
+using SL_API.Dtos;
 
 namespace SL_API.Controllers
 {
@@ -27,22 +28,42 @@ namespace SL_API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> GetProducts()
+        public async Task<ActionResult<List<ProductDto>>> GetProducts()
         {
             //Async provides our code more scalability by making it not block a thread.
             //task is created to deal with our request and the thread is freed to do other request untill the task finishes its job.
             var spec=new ProductsWithTypesAndBrandsSpecification();
             var products=await _productsRepo.ListAsync(spec);
-            return Ok(products);
+            return products.Select(product=> new ProductDto
+            {
+                Id=product.Id,
+                Name=product.Name,
+                Description=product.Description,
+                Price=product.Price,
+                PictureUrl=product.PictureUrl,
+                ProductType=product.ProductType.Name,
+                ProductBrand=product.ProductBrand.Name
+            }).ToList();
         }
 
         [HttpGet("{id}")]
         //We find one entity by providing a Id to search by using FindAsync
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public async Task<ActionResult<ProductDto>> GetProduct(int id)
         {
             var spec=new ProductsWithTypesAndBrandsSpecification(id);
-            return await _productsRepo.GetEntityWithSpec(spec);
+            var product= await _productsRepo.GetEntityWithSpec(spec);
+            return new ProductDto
+            {
+                Id=product.Id,
+                Name=product.Name,
+                Description=product.Description,
+                Price=product.Price,
+                PictureUrl=product.PictureUrl,
+                ProductType=product.ProductType.Name,
+                ProductBrand=product.ProductBrand.Name
+            };
         }
+
         [HttpGet("types")]
         public async Task<ActionResult<IReadOnlyList<ProductType>>>GetProductTypes(){
             var types=await _productsTypeRepo.ListAllAsync();
