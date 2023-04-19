@@ -5,6 +5,7 @@ using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
 using SL_API.Dtos;
+using AutoMapper;
 
 namespace SL_API.Controllers
 {
@@ -16,25 +17,28 @@ namespace SL_API.Controllers
         private readonly IGenericRepository<Product> _productsRepo;
         private readonly IGenericRepository<ProductType> _productsTypeRepo;
         private readonly IGenericRepository<ProductBrand> _productsBrandRepo;
+        private readonly IMapper _mapper;
         //When the controller is called it creates an instance of this controller and calls our IProductRepository as a service.
         public ProductsController(IGenericRepository<Product> productsRepo,
                                   IGenericRepository<ProductType> productsTypeRepo,
-                                  IGenericRepository<ProductBrand> productsBrandRepo)
+                                  IGenericRepository<ProductBrand> productsBrandRepo,
+                                  IMapper mapper)
         {
             //_repo=repo;
             _productsBrandRepo=productsBrandRepo;
             _productsRepo=productsRepo;
             _productsTypeRepo=productsTypeRepo;
+            _mapper=mapper;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<ProductDto>>> GetProducts()
+        public async Task<ActionResult<IReadOnlyList<ProductDto>>> GetProducts()
         {
             //Async provides our code more scalability by making it not block a thread.
             //task is created to deal with our request and the thread is freed to do other request untill the task finishes its job.
             var spec=new ProductsWithTypesAndBrandsSpecification();
             var products=await _productsRepo.ListAsync(spec);
-            return products.Select(product=> new ProductDto
+            /*return products.Select(product=> new ProductDto
             {
                 Id=product.Id,
                 Name=product.Name,
@@ -43,7 +47,8 @@ namespace SL_API.Controllers
                 PictureUrl=product.PictureUrl,
                 ProductType=product.ProductType.Name,
                 ProductBrand=product.ProductBrand.Name
-            }).ToList();
+            }).ToList();*/
+            return Ok(_mapper.Map<IReadOnlyList<Product>,IReadOnlyList<ProductDto>>(products));
         }
 
         [HttpGet("{id}")]
@@ -52,7 +57,7 @@ namespace SL_API.Controllers
         {
             var spec=new ProductsWithTypesAndBrandsSpecification(id);
             var product= await _productsRepo.GetEntityWithSpec(spec);
-            return new ProductDto
+            /*return new ProductDto
             {
                 Id=product.Id,
                 Name=product.Name,
@@ -61,7 +66,8 @@ namespace SL_API.Controllers
                 PictureUrl=product.PictureUrl,
                 ProductType=product.ProductType.Name,
                 ProductBrand=product.ProductBrand.Name
-            };
+            };*/
+            return _mapper.Map<Product,ProductDto>(product);
         }
 
         [HttpGet("types")]
