@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Infrastructure.Data;
 using Core.Interfaces;
 using SL_API.Middleware;
+using Microsoft.AspNetCore.Mvc;
+using SL_API.Errors;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +24,22 @@ builder.Services.AddDbContext<StoreContext>(opt => {
 builder.Services.AddScoped<IProductRepository,ProductRepository>();
 builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+//Flatting out an error from an object to an array of strings
+//Overly complicated code that only does the above and stores the error in the class we created
+//The end result is an array of errors displayed as text
+builder.Services.Configure<ApiBehaviorOptions>(options =>{
+    options.InvalidModelStateResponseFactory=actionContext =>{
+        var errors=actionContext.ModelState.Where(e => e.Value.Errors.Count>0)
+                                           .SelectMany(x => x.Value.Errors)
+                                           .Select(x=>x.ErrorMessage)
+                                           .ToArray();
+
+        var errorResponse= new ApiValidationErrorResponse{Errors=errors};
+        return new BadRequestObjectResult(errorResponse);
+    };
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
