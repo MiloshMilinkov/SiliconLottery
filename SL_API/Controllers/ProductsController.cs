@@ -6,6 +6,7 @@ using Core.Interfaces;
 using Core.Specifications;
 using SL_API.Dtos;
 using AutoMapper;
+using SL_API.Errors;
 
 namespace SL_API.Controllers
 {
@@ -50,6 +51,8 @@ namespace SL_API.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         //We find one entity by providing a Id to search by using FindAsync
         public async Task<ActionResult<ProductDto>> GetProduct(int id)
         {
@@ -65,6 +68,10 @@ namespace SL_API.Controllers
                 ProductType=product.ProductType.Name,
                 ProductBrand=product.ProductBrand.Name
             };*/
+            if(product==null)
+            {
+                return NotFound(new ApiResponse(404));
+            }
             return _mapper.Map<Product,ProductDto>(product);
         }
 
