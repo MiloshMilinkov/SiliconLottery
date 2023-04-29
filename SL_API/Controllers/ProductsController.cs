@@ -17,7 +17,7 @@ namespace SL_API.Controllers
         private readonly IGenericRepository<ProductType> _productsTypeRepo;
         private readonly IGenericRepository<ProductBrand> _productsBrandRepo;
         private readonly IMapper _mapper;
-        //When the controller is called it creates an instance of this controller and calls our IProductRepository as a service.
+        
         public ProductsController(IGenericRepository<Product> productsRepo,
                                   IGenericRepository<ProductType> productsTypeRepo,
                                   IGenericRepository<ProductBrand> productsBrandRepo,
@@ -80,6 +80,7 @@ namespace SL_API.Controllers
             var types=await _productsTypeRepo.ListAllAsync();
             return Ok(types);
         }
+
         [HttpGet("brands")]
         public async Task<ActionResult<IReadOnlyList<ProductType>>>GetProductBrands(){
             var brands=await _productsBrandRepo.ListAllAsync();

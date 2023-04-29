@@ -8,7 +8,6 @@ using SL_API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 // Add services to the container.
 builder.Services.AddControllers();
 
@@ -34,6 +33,7 @@ using var scope= app.Services.CreateScope();
 var services=scope.ServiceProvider;
 var context=services.GetRequiredService<StoreContext>();
 var logger=services.GetRequiredService<ILogger<Program>>();
+
 try
 {
     await context.Database.MigrateAsync();
@@ -41,10 +41,7 @@ try
 }
 catch (Exception ex)
 {
-    
     logger.LogError(ex,"An error occured during migration.");
 }
-
-
 
 app.Run();
