@@ -7,6 +7,7 @@ using Core.Specifications;
 using SL_API.Dtos;
 using AutoMapper;
 using SL_API.Errors;
+using SL_API.Helpers;
 
 namespace SL_API.Controllers
 {
@@ -31,12 +32,19 @@ namespace SL_API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<ProductDto>>> GetProducts([FromQuery]ProductSpecParams productParams)
+        public async Task<ActionResult<Pagination<ProductDto>>> GetProducts([FromQuery]ProductSpecParams productParams)
         {
             //Async provides our code more scalability by making it not block a thread.
             //task is created to deal with our request and the thread is freed to do other request untill the task finishes its job.
             var spec=new ProductsWithTypesAndBrandsSpecification(productParams);
+
+            var countSpec=new ProductWithFiltersForCountSpecification(productParams);
+
+            var totalItem=await  _productsRepo.CountAsync(countSpec);
+
             var products=await _productsRepo.ListAsync(spec);
+
+            var data=_mapper.Map<IReadOnlyList<Product>,IReadOnlyList<ProductDto>>(products);
             /*return products.Select(product=> new ProductDto
             {
                 Id=product.Id,
@@ -47,7 +55,7 @@ namespace SL_API.Controllers
                 ProductType=product.ProductType.Name,
                 ProductBrand=product.ProductBrand.Name
             }).ToList();*/
-            return Ok(_mapper.Map<IReadOnlyList<Product>,IReadOnlyList<ProductDto>>(products));
+            return Ok(new Pagination<ProductDto>(productParams.PageIndex,productParams.PageSize,totalItem,data));
         }
 
         [HttpGet("{id}")]
