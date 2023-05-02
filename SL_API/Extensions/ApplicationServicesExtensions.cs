@@ -46,6 +46,14 @@ namespace SL_API.Extensions
                 };
             });
 
+            services.AddCors(opt=>
+            {
+                opt.AddPolicy(name:"CorsPolicy", policy=>
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+                });
+            });
+
             return services;    
         }
     }

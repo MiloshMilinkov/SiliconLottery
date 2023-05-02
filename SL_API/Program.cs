@@ -25,6 +25,9 @@ app.UseSwaggerUI();
 //app.UseHttpsRedirection(); LATER SEE IF IT IS NEEDED
 app.UseStaticFiles();
 
+
+app.UseCors("CorsPolicy");
+
 app.UseAuthorization();
 
 app.MapControllers();
