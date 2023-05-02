@@ -31,14 +31,11 @@ namespace SL_API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<ProductDto>>> GetProducts(
-            string sort,
-            int? brandId,
-            int? typeId)
+        public async Task<ActionResult<IReadOnlyList<ProductDto>>> GetProducts([FromQuery]ProductSpecParams productParams)
         {
             //Async provides our code more scalability by making it not block a thread.
             //task is created to deal with our request and the thread is freed to do other request untill the task finishes its job.
-            var spec=new ProductsWithTypesAndBrandsSpecification(sort,brandId,typeId);
+            var spec=new ProductsWithTypesAndBrandsSpecification(productParams);
             var products=await _productsRepo.ListAsync(spec);
             /*return products.Select(product=> new ProductDto
             {
