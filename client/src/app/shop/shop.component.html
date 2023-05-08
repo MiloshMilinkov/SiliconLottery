@@ -1,5 +1,58 @@
-<ul>
-    <li class="list-unstyled" *ngFor="let product of products">
-        {{product.name}}
-    </li>
-</ul>
+<div class="container">
+    <div class="row">
+        <section class="col-3">
+
+            <h5 class="sortOptHeaders  ms-3 ">
+                Sort
+            </h5> 
+            <select class="form-select mb-4">
+                <option selected>A-z: Low to high</option>
+                <option>Z-a: High to low</option>
+                <option>Price: Low to high</option>
+                <option>price: High to low</option>
+            </select>
+            
+
+            <h5 class="sortOptHeaders  ms-3">
+                Brands
+            </h5>    
+            <ul class="list-group my-3">
+                <li class="list-group-item active">First active item</li>
+                <li class="list-group-item">Second item</li>
+                <li class="list-group-item">Third item</li>
+                <li class="list-group-item">Fourth item</li>
+                <li class="list-group-item">Fifth item</li>
+            </ul>
+
+            <h5 class="sortOptHeaders  ms-3">
+                Types
+            </h5>    
+            <ul class="list-group my-3">
+                <li class="list-group-item active">First active item</li>
+                <li class="list-group-item">Second item</li>
+                <li class="list-group-item">Third item</li>
+                <li class="list-group-item">Fourth item</li>
+                <li class="list-group-item">Fifth item</li>
+            </ul>
+           
+        </section>
+        <section class="col-9">
+            <div class="d-flex justify-content-between align-item center pb-2">
+                <header>
+                    <span>Showing <strong>10</strong> of <strong>18</strong> results</span>
+                </header>
+                <div class="d-flex mt-2">
+                    <input type="text" placeholder="search" class="form-control me-2">
+                    <button class="btn btn-outline-primary mx-2">Search</button>
+                    <button class="btn btn-outline-success ">Reset</button>
+                </div>
+            </div>
+            <div class="row row-cols-3 g-3">
+                <div class="col" *ngFor="let product of products">
+                    <app-product-item></app-product-item>
+                </div>
+            </div>
+            
+        </section>
+    </div>
+</div>
