@@ -8,27 +8,100 @@
         "ProductBrandId":1
     },
     {
-        "Name": "PowerColor AXRX 6800XT 16GBD6-3DHEOC",
-        "Description":"gpu",
-        "Price":450,
-        "PictureUrl":"images/products/PowerColor_AXRX_6800XT_16GBD6-3DHEOC",
-        "ProductTypeId":5,
-        "ProductBrandId":9
+        "Name": "AMD Ryzen 5 4500",
+        "Description":"processor",
+        "Price":125,
+        "PictureUrl":"images/products/AMD_Ryzen_5_4500.png",
+        "ProductTypeId":2,
+        "ProductBrandId":1
     },
     {
-        "Name": "1 TB Samsung 970 EVO PLUS MZ-V7S1T0BW",
-        "Description":"ssd",
-        "Price":75,
-        "PictureUrl":"",
-        "ProductTypeId":5,
-        "ProductBrandId":7
+        "Name": "AMD Ryzen 5 3600",
+        "Description":"processor",
+        "Price":150,
+        "PictureUrl":"images/products/AMD_Ryzen_5_3600.png",
+        "ProductTypeId":2,
+        "ProductBrandId":1
     },
     {
-        "Name": "2 TB Samsung 970 EVO PLUS MZ-V7S1T0BW",
-        "Description":"ssd",
-        "Price":120,
-        "PictureUrl":"",
-        "ProductTypeId":5,
-        "ProductBrandId":7
+        "Name": "AMD Ryzen 5 5800x",
+        "Description":"processor",
+        "Price":200,
+        "PictureUrl":"images/products/AMD_Ryzen_5_5800x.png",
+        "ProductTypeId":2,
+        "ProductBrandId":1
+    },
+    {
+        "Name": "AMD Ryzen 5 5500",
+        "Description":"processor",
+        "Price":140,
+        "PictureUrl":"images/products/AMD_Ryzen_5_5500.png",
+        "ProductTypeId":2,
+        "ProductBrandId":1
+    },
+    {
+        "Name": "AMD Ryzen 5 5600X",
+        "Description":"processor",
+        "Price":175,
+        "PictureUrl":"images/products/AMD_Ryzen_5_5600X.png",
+        "ProductTypeId":2,
+        "ProductBrandId":1
+    },
+    {
+        "Name": "Intel i5-10400F",
+        "Description":"processor",
+        "Price":110,
+        "PictureUrl":"images/products/Intel_i5_10400F.png",
+        "ProductTypeId":2,
+        "ProductBrandId":10
+    },
+    {
+        "Name": "Intel i5-11400F",
+        "Description":"processor",
+        "Price":125,
+        "PictureUrl":"images/products/Intel_i5_11400F.png",
+        "ProductTypeId":2,
+        "ProductBrandId":10
+    },
+    {
+        "Name": "Intel i5-12400F",
+        "Description":"processor",
+        "Price":150,
+        "PictureUrl":"images/products/Intel_i5_12400F.png",
+        "ProductTypeId":2,
+        "ProductBrandId":10
+    },
+    {
+        "Name": "Intel i7-11700F",
+        "Description":"processor",
+        "Price":180,
+        "PictureUrl":"images/products/Intel_i7_11700F.png",
+        "ProductTypeId":2,
+        "ProductBrandId":10
+    },
+    {
+        "Name": "Intel i5-12500",
+        "Description":"processor",
+        "Price":210,
+        "PictureUrl":"images/products/Intel_i5_12500.png",
+        "ProductTypeId":2,
+        "ProductBrandId":10
+    },
+    {
+        "Name": "Intel i9-11900F",
+        "Description":"processor",
+        "Price":250,
+        "PictureUrl":"images/products/Intel_i9_11900F.png",
+        "ProductTypeId":2,
+        "ProductBrandId":10
+    },
+    {
+        "Name": "Intel i9-12900K",
+        "Description":"processor",
+        "Price":350,
+        "PictureUrl":"images/products/Intel_i9_12900K.png",
+        "ProductTypeId":2,
+        "ProductBrandId":10
     }
+
 ]
