@@ -1,9 +1,13 @@
 <header class="mainHeader d-flex flex-md-row align-items-center justify-content-between p-3 px-4 mb-3 border-bottom fixed-top shadow-sm">
-    <img class="logoImage" src="/assets/Images/storeLogo.png" alt="Store logo.">  
+    <img class="logoImage" src="/assets/Images/storeLogo.png" alt="Store logo." routerLink="/">  
     <nav class="my-2 text-uppercase fs-4">
-        <a class="me-3 py-2 text-dark text-decoration-none" href="#">Home</a>
-        <a class="me-3 py-2 text-dark text-decoration-none" href="#">Shop</a>
-        <a class="me-3 py-2 text-dark text-decoration-none" href="#">Contact</a>
+        <a class="me-3 py-2" 
+           routerLink="/" 
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact:true}">Home
+        </a>
+        <a class="me-3 py-2" routerLink="/shop" routerLinkActive="active">Shop</a>
+        <a class="me-3 py-2" routerLink="/contact" routerLinkActive="active">Contact</a>
     </nav>
     <div class="d-flex flex-ms-column align-items-center">
         <a class="position-relative">
