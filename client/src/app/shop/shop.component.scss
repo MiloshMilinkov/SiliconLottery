@@ -1,3 +1,69 @@
 .sortOptHeaders{
     color: #9D00FF;
 }
+.list-group-item{
+    background-color: #000000;
+    color: #FF97E9;
+    border: 2px solid #FF97E9;
+    border-radius: 10px;
+    text-align: center;
+}
+.active{
+    background-color: #FF97E9 !important;
+    color: black;
+    font-weight: bold;
+}
+.example-accordion {
+    display: block;
+    max-width: 500px;
+  }
+  
+  .example-accordion-item {
+    display: block;
+    border: solid 3px #000000;
+    background-color: #202020;
+  }
+  
+  .example-accordion-item + .example-accordion-item {
+    border-top: none;
+  }
+  
+  .example-accordion-item-header {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+  }
+  
+  .example-accordion-item-description {
+    font-size: 0.85em;
+    color: #999;
+  }
+  
+  .example-accordion-item-header,
+  .example-accordion-item-body {
+    padding: 16px;
+  }
+  
+  .example-accordion-item-header:hover {
+    cursor: pointer;
+    background-color: #FF97E9;
+  }
+  .example-accordion-item-header:hover>* {
+    cursor: pointer;
+    background-color: #FF97E9;
+    color: #202020;
+  }
+  
+  .example-accordion-item:first-child {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+  
+  .example-accordion-item:last-child {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+  p{
+    color:#FF97E9;
+    font-weight: bold;
+  }

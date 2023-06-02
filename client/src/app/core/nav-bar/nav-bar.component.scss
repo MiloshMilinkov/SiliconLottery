@@ -13,17 +13,20 @@
     right: 32px;
 }
 .mainHeader{
-    background-color: #A19EA0;
+    background-color: #202020;
 }
 a{
     text-decoration: none;
-    color:#343a40;
+    color:#FF97E9;
 
     &.active{
-        color:#9D00FF
+        color:#202020;
+  z-index: -1;
+  background-color: #FF97E9;
+  border-radius: 15px;
     }
 }
 .logoImage{
-    max-height:70px;
+    max-height:100px;
     cursor: pointer;
 }

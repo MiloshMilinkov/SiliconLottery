@@ -4,6 +4,8 @@ import { ShopService } from './shop.service';
 import { Type } from '../shared/models/type';
 import { Brand } from '../shared/models/brand';
 import { ShopParams } from '../shared/models/shopParams';
+import {NgFor} from '@angular/common';
+import {CdkAccordionModule} from '@angular/cdk/accordion';
 
 @Component({
   selector: 'app-shop',
@@ -15,6 +17,9 @@ export class ShopComponent implements OnInit {
   products:Product[] = [];
   brands  :Brand[]   = [];
   types   :Type[]    = [];
+
+  items = ['Product Brands', 'Product Types'];
+  expandedIndex = 0;
   shopParams=new ShopParams()
   sortOptions=[
     {name:'A-z: Low to high',value:'nameAsc'},
