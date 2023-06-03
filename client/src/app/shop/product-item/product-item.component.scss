@@ -1,9 +1,50 @@
-h6{
-    color: #9D00FF;
-}
 .card{
-    background-color: #dedcde;
+    height: 400px;
 }
-.itemImg{
-    background-color: white;
+.card-body{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #ffffff;
 }
+
+.btn{
+    width: 30%;
+    height: 40px;
+    background-color: #C0C0C0;
+    border: 1px solid black;
+    color:black;
+    font-weight: bold;
+}
+
+.image :hover{
+    opacity: 1;
+    & button{
+        transform: none;
+        opacity: 1;
+    }
+}
+.hover-overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: all 0.5s;
+    & button {
+        z-index: 1000;
+        transition: all 0.5s;
+    }
+    & button:first-of-type{
+        transform: translateX(-20px);
+    }
+    & button:last-of-type{
+        transform: translateX(20px);
+    }
+}
+
+.fa-shopping-cart {
+    color: black;
+  }

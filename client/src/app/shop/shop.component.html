@@ -1,6 +1,6 @@
 <div class="container ">
     
-    <div class="row">
+    <div class="row" *ngIf="types.length>0 && brands.length>0">
         <section class="col-3">
 
             <h5 class="sortOptHeaders  ms-3 ">
@@ -12,7 +12,6 @@
 
              <cdk-accordion class="example-accordion">
                 <cdk-accordion-item
-                
                   #accordionItem1="cdkAccordionItem"
                   class="example-accordion-item"
                   role="button"
@@ -85,7 +84,7 @@
                     [pageNumber]="shopParams.pageNumber"
                     [pageSize]="shopParams.pageSize">  
                 </app-paging-header>
-                
+                <app-section-header></app-section-header>
                 <div class="d-flex mt-2">
                     <input (keyup.enter)="onSearch()" placeholder="search" class="form-control me-2" #search>
                     <button (click)="onSearch()" class="btn btn-outline-primary mx-2">Search</button>

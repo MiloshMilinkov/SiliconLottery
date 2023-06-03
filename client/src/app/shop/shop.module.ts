@@ -7,21 +7,23 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ShopRoutingModule } from './shop-routing.module';
 import {CdkAccordionModule} from '@angular/cdk/accordion';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { CoreModule } from "../core/core.module";
 
 
 @NgModule({
-  declarations: [
-    ShopComponent,
-    ProductItemComponent,
-    ProductDetailsComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    ShopRoutingModule,
-    CdkAccordionModule,
-    AccordionModule.forRoot(),
-  ],
-  bootstrap: [ShopComponent]
+    declarations: [
+        ShopComponent,
+        ProductItemComponent,
+        ProductDetailsComponent
+    ],
+    bootstrap: [ShopComponent],
+    imports: [
+        CommonModule,
+        SharedModule,
+        ShopRoutingModule,
+        CdkAccordionModule,
+        AccordionModule.forRoot(),
+        CoreModule
+    ]
 })
 export class ShopModule { }

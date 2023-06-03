@@ -1,10 +1,11 @@
 <div class="row"*ngIf="product">
+    <app-section-header></app-section-header>
     <div class="col-6">
         <img src="{{product.pictureUrl}}" alt="{{product.name}}" class="w-100">
     </div>
     <div class="col-5 mt-5">
         <h2>{{product.name}}</h2>
-        <p>{{product.price | currency}}</p>
+        <p style="font-size: 2em;">{{product.price | currency}}</p>
         <div class="d-flex justify-content-start align-item-center">
             <i class="fa fa-minus-circle text-warning me-2" style="cursor: pointer;font-size:2em"></i>
             <span class="font-weight-bold" style="font-size:1.5em;">2</span>
