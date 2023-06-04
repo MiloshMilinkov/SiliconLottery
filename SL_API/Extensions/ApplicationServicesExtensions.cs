@@ -30,6 +30,7 @@ namespace SL_API.Extensions
                 var options = ConfigurationOptions.Parse(config.GetConnectionString("Redis"));
                 return ConnectionMultiplexer.Connect(options);
             });
+            services.AddScoped<IBasketRepository,BasketRepository>();
 
             //Addind our service only for the lifetime of the http request, good for data gathering!
             services.AddScoped<IProductRepository,ProductRepository>();
