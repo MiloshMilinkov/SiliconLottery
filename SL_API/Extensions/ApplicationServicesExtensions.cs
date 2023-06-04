@@ -8,6 +8,7 @@ using Core.Interfaces;
 using SL_API.Middleware;
 using Microsoft.AspNetCore.Mvc;
 using SL_API.Errors;
+using StackExchange.Redis;
 
 namespace SL_API.Extensions
 {
@@ -23,6 +24,11 @@ namespace SL_API.Extensions
             //which we created inside appsettings.Development.json.
             services.AddDbContext<StoreContext>(opt => {
                 opt.UseSqlite(config.GetConnectionString("DefaultConnection"));
+            });
+
+            services.AddSingleton<IConnectionMultiplexer>(c=>{
+                var options = ConfigurationOptions.Parse(config.GetConnectionString("Redis"));
+                return ConnectionMultiplexer.Connect(options);
             });
 
             //Addind our service only for the lifetime of the http request, good for data gathering!
