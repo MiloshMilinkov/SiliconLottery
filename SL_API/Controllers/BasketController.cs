@@ -2,18 +2,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using SL_API.Dtos;
 
 namespace SL_API.Controllers
 {
     public class BasketController : BaseApiController
     {
         private readonly IBasketRepository _basketRepository;
-        public BasketController(IBasketRepository basketRepository)
+        private readonly IMapper _mapper;
+        public BasketController(IBasketRepository basketRepository
+            , IMapper mapper)
         {
             _basketRepository=basketRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -24,9 +29,10 @@ namespace SL_API.Controllers
         }
         
         [HttpPost]
-        public async Task<ActionResult<CustomerBasket>> UpdateBasket(CustomerBasket customerBasket)
+        public async Task<ActionResult<CustomerBasket>> UpdateBasket(CustomerBasketDto customerBasketDto)
         {
-            var updateBasket=await _basketRepository.UpdateOrCreateBasketAsync(customerBasket);
+            var customerBasket = _mapper.Map<CustomerBasketDto , CustomerBasket>(customerBasketDto);
+            var updateBasket = await _basketRepository.UpdateOrCreateBasketAsync(customerBasket);
             return Ok(updateBasket);
         }
 
