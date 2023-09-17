@@ -45,11 +45,49 @@ namespace Infrastructure.Data
                 .ToListAsync();
         }
 
+        public async Task<(IReadOnlyList<Product>,int)> GetProductsAsync(string searchTerm = null, string orderBy = "nameAsc", int? pageIndex = null, int pageSize = 5, int? typeId = null, int? brandId = null)
+        {
+            var query = _storeContext.Products.AsQueryable();
+            
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                query = query.Where(p => p.Name.Contains(searchTerm));
+            }
+            if (typeId.HasValue && typeId>0)
+            {
+                query = query.Where(p => p.ProductTypeId == typeId.Value);
+            }
+            
+            if (brandId.HasValue && brandId>0)
+            {
+                query = query.Where(p => p.ProductBrandId == brandId.Value);
+            }
+            int totalCount = await query.CountAsync();
+            
+            query = orderBy.ToLower() switch
+            {
+                "pricedesc" => query.OrderByDescending(p => p.Price),
+                "priceasc" => query.OrderBy(p => p.Price),
+                "namedesc" => query.OrderByDescending(p => p.Name),
+                _ => query.OrderBy(p => p.Name),
+            };
+
+             
+            if (pageIndex.HasValue)
+            {
+                query = query.Skip(pageSize * (pageIndex.Value-1)).Take(pageSize);
+            }
+
+            var products= await query
+                .Include(p => p.ProductType)
+                .Include(p => p.ProductBrand)
+                .ToListAsync();
+            return(products,totalCount);
+        }
         public async Task<ProductType> GetTypeByIdAsync(int id)
         {
             return await _storeContext.ProductTypes.FindAsync(id);
         }
-
         public async Task<IReadOnlyList<ProductType>> GetTypesAsync()
         {
             return await _storeContext.ProductTypes.ToListAsync();

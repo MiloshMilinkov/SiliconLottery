@@ -13,28 +13,25 @@ export class ShopService {
   baseUrl:string='https://localhost:5001/api/';
   constructor(private http:HttpClient) { }
 
-  getProducts(shopParams:ShopParams){
-    let params= new HttpParams();
+  getProducts(shopParams: ShopParams){
+    let params = new HttpParams();
 
-    if(shopParams.brandId > 0){
-      params=params.append('brandId',shopParams.brandId);
+    if(shopParams.brandId !== null){
+      params = params.append('brandId', shopParams.brandId);
     }
-    if(shopParams.typeId > 0){
-      params=params.append('typeId',shopParams.typeId);
+    if(shopParams.typeId !== null){
+      params = params.append('typeId', shopParams.typeId);
     }
-    if(shopParams.search)
-    {
-      params=params.append('search',shopParams.search);
+    if(shopParams.searchTerm){
+      params = params.append('searchTerm', shopParams.searchTerm);
     }
-    params=params.append('sort',shopParams.sort);
-    params=params.append('pageIndex',shopParams.pageNumber);
-    params=params.append('pageSize',shopParams.pageSize);
-    
-    
-
-
-    return this.http.get<Pagination<Product[]>>(this.baseUrl+'products',{params});
-  }
+    params = params.append('orderBy', shopParams.orderBy);
+    params = params.append('pageIndex', shopParams.pageIndex.toString());
+    params = params.append('pageSize', shopParams.pageSize.toString());
+console.log(shopParams.pageIndex,shopParams.pageSize)
+    //return this.http.get<Pagination<Product[]>>(this.baseUrl+'products', {params});
+    return this.http.get<Pagination<Product[]>>(this.baseUrl+'products', {params});
+}
 
   getBrands(){
     return this.http.get<Brand[]>(this.baseUrl+'products/brands');

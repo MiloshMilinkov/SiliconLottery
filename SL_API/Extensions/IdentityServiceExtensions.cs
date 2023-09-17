@@ -17,13 +17,16 @@ using SL_API.Errors;
 using StackExchange.Redis;
 using Core.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace SL_API.Extensions
 {
     public static class IdentityServiceExtensions
     {
         public static IServiceCollection AddIdentityServices(this IServiceCollection services,
-                                                                  IConfiguration config)
+            IConfiguration config)
         {
             services.AddDbContext<AppIdentityDbContext>(opt =>
             {
@@ -31,14 +34,23 @@ namespace SL_API.Extensions
             });
 
             services.AddIdentityCore<AppUser>(opt=>{
-                //add identity options here if you want 
+                opt.Password.RequiredUniqueChars=0;
             })
             .AddEntityFrameworkStores<AppIdentityDbContext>()
             .AddSignInManager<SignInManager<AppUser>>();
 
-            services.AddAuthentication();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddJwtBearer(options => {
+                        options.TokenValidationParameters=new TokenValidationParameters
+                        {
+                            ValidateIssuerSigningKey = true,
+                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Token:Key"])),
+                            ValidIssuer = config["Token:Issuer"],
+                            ValidateIssuer = true,
+                            ValidateAudience = false
+                        };
+                    });
             services.AddAuthorization();
-            
 
             return services;
         }

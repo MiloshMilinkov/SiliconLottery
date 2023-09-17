@@ -9,6 +9,7 @@ using SL_API.Middleware;
 using Microsoft.AspNetCore.Mvc;
 using SL_API.Errors;
 using StackExchange.Redis;
+using Infrastructure.Services;
 
 namespace SL_API.Extensions
 {
@@ -34,7 +35,8 @@ namespace SL_API.Extensions
 
             //Addind our service only for the lifetime of the http request, good for data gathering!
             services.AddScoped<IProductRepository,ProductRepository>();
-            services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
+            services.AddScoped<ITokenService,TokenService>();
+            //services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             //Flatting out an error from an object to an array of strings

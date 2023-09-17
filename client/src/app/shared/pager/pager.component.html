@@ -1,6 +1,6 @@
-<pagination *ngIf="totalCount && pageSize"
+<pagination *ngIf="count && pageSize"
     [boundaryLinks]="true" 
-    [totalItems]="totalCount" 
+    [totalItems]="count" 
     [itemsPerPage]="pageSize" 
     [maxSize]="5"
     (pageChanged)="onPagerChanged($event)" 

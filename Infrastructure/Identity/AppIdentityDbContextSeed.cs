@@ -12,9 +12,9 @@ namespace Infrastructure.Identity
         public static async Task SeedUsersAsync(UserManager<AppUser> userManager){
             if(!userManager.Users.Any()){
                 var user=new AppUser{
-                    DisplayName="test",
-                    Email="test@test.com",
-                    UserName="test",
+                    DisplayName="milos",
+                    Email="milos@gmail.com",
+                    UserName="milos",
                     Address= new Address{
                         StreetName="test street",
                         StreetNumber=1,

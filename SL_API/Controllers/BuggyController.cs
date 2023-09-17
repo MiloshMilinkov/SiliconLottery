@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SL_API.Errors;
 
@@ -15,6 +16,12 @@ namespace SL_API.Controllers
             _storeContext=storeContext;
         }
 
+        [HttpGet("testauth")]
+        [Authorize]
+        public ActionResult<string> GetSecretText(){
+            return "secret stuff";
+        }
+        
         [HttpGet("notfound")]
         public ActionResult GetNotFoundRequest(){
             var thing=_storeContext.Products.Find(42);
