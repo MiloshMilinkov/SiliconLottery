@@ -38,9 +38,9 @@ namespace SL_API.Controllers
         public async Task<ActionResult<UserDto>> GetCurrentUser(){
             var user= await _userManager.FindByEmailClaimsPrincipal(User);
             return new UserDto{ 
-                DisplayName=user.DisplayName,
-                Token=_tokenService.CreateToken(user),
-                Email=user.Email
+                displayName=user.DisplayName,
+                token=_tokenService.CreateToken(user),
+                email=user.Email
             } ;
         }
 
@@ -57,16 +57,16 @@ namespace SL_API.Controllers
                 return Unauthorized(new ApiResponse(401));
             }
             return new UserDto{
-                Email=foundUser.Email,
-                Token = _tokenService.CreateToken(foundUser),
-                DisplayName=foundUser.DisplayName
+                email=foundUser.Email,
+                token = _tokenService.CreateToken(foundUser),
+                displayName=foundUser.DisplayName
             };
         }
 
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto){
 
-            if (CheckEmailExists(registerDto.Email).Result.Value)
+            if (emailExists(registerDto.Email).Result.Value)
             {
                 return new BadRequestObjectResult (
                     new ApiValidationErrorResponse{ 
@@ -88,15 +88,15 @@ namespace SL_API.Controllers
             }
 
             return new UserDto{ 
-                DisplayName = user.DisplayName,
-                Token = _tokenService.CreateToken(user),
-                Email = user.Email
+                displayName = user.DisplayName,
+                token = _tokenService.CreateToken(user),
+                email = user.Email
             } ;
         }
 
         
         [HttpGet("emailExists")]
-        public async Task<ActionResult<bool>> CheckEmailExists([FromQuery] string email)
+        public async Task<ActionResult<bool>> emailExists([FromQuery] string email)
         {
             return await _userManager.FindByEmailAsync(email)!=null;
         }

@@ -7,8 +7,8 @@ namespace SL_API.Dtos
 {
     public class UserDto
     {
-        public string Email { get; set; }
-        public string DisplayName { get; set; }
-        public string Token { get; set; }
+        public string email { get; set; }
+        public string displayName { get; set; }
+        public string token { get; set; }
     }
 }

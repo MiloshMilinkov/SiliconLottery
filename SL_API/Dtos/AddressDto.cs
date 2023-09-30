@@ -9,12 +9,12 @@ namespace SL_API.Dtos
     public class AddressDto
     {
         [Required]
-        public string StreetName { get; set; }
+        public string streetName { get; set; }
         [Required]
-        public int StreetNumber { get; set; }
+        public int streetNumber { get; set; }
         [Required]
-        public string  City { get; set; }
+        public string  city { get; set; }
         [Required]
-        public string ZipCode { get; set; }
+        public string zipCode { get; set; }
     }
 }
