@@ -1,5 +1,6 @@
 using System.Text.Json;
 using Core.Entities;
+using Core.Entities.Order;
 namespace Infrastructure.Data
 {
     public class StoreContextSeed
@@ -20,6 +21,11 @@ namespace Infrastructure.Data
                 var productsJson=File.ReadAllText("../Infrastructure/Data/SeedData/Products.json");
                 var products=JsonSerializer.Deserialize<List<Product>>(productsJson);
                 storeContext.Products.AddRange(products);
+            }
+            if(!storeContext.Delivery.Any()){
+                var deliveryJson=File.ReadAllText("../Infrastructure/Data/SeedData/delivery.json");
+                var deliveries=JsonSerializer.Deserialize<List<Delivery>>(deliveryJson);
+                storeContext.Delivery.AddRange(deliveries);
             }
             
             if(storeContext.ChangeTracker.HasChanges()){
