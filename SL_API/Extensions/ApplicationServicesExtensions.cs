@@ -34,8 +34,12 @@ namespace SL_API.Extensions
             services.AddScoped<IBasketRepository,BasketRepository>();
 
             //Addind our service only for the lifetime of the http request, good for data gathering!
-            services.AddScoped<IProductRepository,ProductRepository>();
-            services.AddScoped<ITokenService,TokenService>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IDeliveryRepository, DeliveryRepository>();
+            services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             //services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

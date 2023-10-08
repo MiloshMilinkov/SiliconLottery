@@ -17,7 +17,7 @@ namespace Core.Entities.Order
             this.Delivery = delivery;
             this.OrderItems = orderItems;
         }
-                public string BuyerEmail { get; set; }
+        public string BuyerEmail { get; set; }
         public DateTime OrderDate { get; set; } = DateTime.UtcNow;
         public Address ShipToAddress { get; set; }
         public Delivery Delivery { get; set; }
