@@ -11,13 +11,11 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
-import { OrderDetailedComponent } from './order-detailed/order-detailed.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    OrderDetailedComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
