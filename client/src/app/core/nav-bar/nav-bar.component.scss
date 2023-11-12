@@ -1,36 +1,106 @@
 
-.cart-no{
+// .cart-no{
+//     position: absolute;
+//     min-height: 25px;
+//     min-width: 25px;
+//     border-radius: 50%;
+//     background-color: purple;
+//     color: white;
+//     font-size: large;
+//     font-weight: bolder;
+//     text-align: center;
+//     top: -12px;
+//     right: 32px;
+// }
+// .mainHeader{
+//     background-color: #202020;
+// }
+// a{
+//     text-decoration: none;
+//     color:#FF97E9;
+
+//     &.active{
+//         color:#202020;
+//   z-index: -1;
+//   background-color: #FF97E9;
+//   border-radius: 15px;
+//     }
+// }
+// .logoImage{
+//     max-height:100px;
+//     cursor: pointer;
+// }
+
+// p{
+//     color:#FF97E9;
+// }
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+.cart-no {
     position: absolute;
     min-height: 25px;
     min-width: 25px;
     border-radius: 50%;
-    background-color: purple;
-    color: white;
+    background-color: #4C4C4C; // Metallic gray
+    color: fa459f;
     font-size: large;
     font-weight: bolder;
     text-align: center;
     top: -12px;
     right: 32px;
 }
-.mainHeader{
-    background-color: #202020;
-}
-a{
-    text-decoration: none;
-    color:#FF97E9;
 
-    &.active{
-        color:#202020;
-  z-index: -1;
-  background-color: #FF97E9;
-  border-radius: 15px;
+.mainHeader {
+    background-color: #121212; // Dark background
+    border-bottom: 1px solid #EC5BC6;
+    font-family: 'Orbitron', sans-serif; // Futuristic font
+}
+a {
+    text-decoration: none;
+    color: #EC5BC6 ; // Metallic text color
+
+    &:hover {
+        color: #FFF; // Brighter color on hover
+        transition: color 0.3s ease-in-out;
+    }
+
+    &.active {
+        color: #000000;
+        background-color: #EC5BC6; // Metallic active state
+        border-radius: 15px;
+        padding: 5px 10px; // Added padding for better visibility
     }
 }
-.logoImage{
-    max-height:100px;
+
+.logoImage {
+    max-height: 100px;
     cursor: pointer;
 }
 
-p{
-    color:#FF97E9;
+p {
+    color: #EC5BC6; // Consistent text color
 }
+
+Additional styling for a more modern look
+nav a {
+    transition: all 0.3s ease-in-out;
+}
+
+.dropdown-menu {
+    background-color: #202020; // Dark dropdown background
+    border: none;
+
+    .dropdown-item {
+        color: #EC5BC6; // Metallic text in dropdown
+
+        &:hover {
+            background-color: #000000;
+        }
+    }
+}
+
+// Styling for the shopping cart icon
+.fa-shopping-cart {
+    color: #EC5BC6; // Metallic icon color
+}
+

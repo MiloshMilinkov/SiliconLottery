@@ -24,7 +24,7 @@ import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
     HttpClientModule,
     CoreModule,
     HomeModule,
-    AccordionModule,
+    AccordionModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS,useClass:ErrorInterceptor, multi:true},

@@ -1,70 +1,101 @@
-.sortOptHeaders{
-    color: #9D00FF;
+.cyberpunk-container {
+  background-color: #121212; /* Dark background */
+  color: #c0c0c0; /* Light grey text for readability */
+  border-radius: 10px;
 }
-.list-group-item{
-    background-color: #000000;
-    color: #FF97E9;
-    border: 2px solid #FF97E9;
-    border-radius: 10px;
-    text-align: center;
+
+.filter-section, .product-section {
+  padding: 20px;
 }
-.active{
-    background-color: #FF97E9 !important;
-    color: black;
-    font-weight: bold;
+
+.sort-header {
+  color: #ff0097; /* Neon pink */
+  font-weight: bold;
 }
-.example-accordion {
-    display: block;
-    max-width: 500px;
-  }
-  
-  .example-accordion-item {
-    display: block;
-    border: solid 3px #000000;
-    background-color: #202020;
-  }
-  
-  .example-accordion-item + .example-accordion-item {
-    border-top: none;
-  }
-  
-  .example-accordion-item-header {
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
-  }
-  
-  .example-accordion-item-description {
-    font-size: 0.85em;
-    color: #999;
-  }
-  
-  .example-accordion-item-header,
-  .example-accordion-item-body {
-    padding: 16px;
-  }
-  
-  .example-accordion-item-header:hover {
-    cursor: pointer;
-    background-color: #FF97E9;
-  }
-  .example-accordion-item-header:hover>* {
-    cursor: pointer;
-    background-color: #FF97E9;
-    color: #202020;
-  }
-  
-  .example-accordion-item:first-child {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-  }
-  
-  .example-accordion-item:last-child {
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-  }
-  p{
-    color:#FF97E9;
-    font-weight: bold;
-  }
-  
+
+.sort-select {
+  background-color: #222;
+  color: #fff;
+  border-color: #ff0097;
+}
+
+.cyberpunk-accordion .accordion-item {
+  background-color: #1a1a1a;
+  border-color: #ff0097;
+}
+
+.cyberpunk-accordion .accordion-header {
+  color: #ff0097;
+  background-color: #2a2a2a;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.cyberpunk-accordion .accordion-header:hover {
+  background-color: #ff0097;
+  color: #000;
+}
+
+.cyberpunk-accordion .accordion-description {
+  font-size: 0.8em;
+  color: #999;
+}
+
+.brand-list, .type-list {
+  padding: 0;
+  list-style: none;
+}
+
+.brand-item, .type-item {
+  background-color: #333;
+  color: #ff0097;
+  padding: 5px;
+  margin: 5px 0;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.brand-item:hover, .type-item:hover {
+  background-color: #ff0097;
+  color: #000;
+}
+
+.brand-item.active, .type-item.active {
+  background-color: #ff0097;
+  color: #000;
+  font-weight: bold;
+}
+
+/* Additional styles for product section, buttons, inputs, etc., should follow the same theme */
+.product-item {
+  border-radius: 15px; /* Rounded edges */
+  overflow: hidden; /* Ensures that the content respects the border radius */
+  box-shadow: 0 4px 8px #ff0097; /* Adds a subtle shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.product-item:hover {
+  transform: scale(1.05); /* Slightly enlarges the item on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7); /* Enhances the shadow on hover */
+}
+
+/* Styling for the image inside the product item */
+.product-item img {
+  width: 100%; /* Ensures the image takes the full width of the container */
+  height: auto; /* Keeps the image aspect ratio */
+  object-fit: cover; /* Ensures the image covers the area nicely */
+}
+
+/* Additional styling for the content inside the product item */
+.product-item .product-info {
+  padding: 10px;
+  background-color: #1a1a1a; /* Dark background for the text area */
+  color: #fff; /* Light text for readability */
+}
+.card-body{
+  padding: 10px;
+  background-color: #1a1a1a; /* Dark background for the text area */
+  color: #fff; /* Light text for readability */
+}
